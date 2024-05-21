@@ -3,18 +3,20 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center py-4 mb-8">
-      <Link className="text-2xl font-bold" href="/work">
+    <header className="header">
+      <Link className="header-title" href="/work">
         yoav hainebach
       </Link>
       <nav>
-        <Link className="mr-4" href="/work">
+        <Link className="nav-link" href="/work">
           Work
         </Link>
-        <Link className="mr-4" href="/contact">
+        <Link className="nav-link" href="/contact">
           Contact
         </Link>
-        <Link href="/about">About</Link>
+        <Link className="nav-link" href="/about">
+          About
+        </Link>
       </nav>
     </header>
   );
