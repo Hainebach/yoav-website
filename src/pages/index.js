@@ -10,7 +10,7 @@ export default function Home() {
     <main className="relative h-screen w-full">
       <Image
         src="/images/background/backgammon_background.jpg"
-        layout="fill"
+        fill
         objectFit="cover"
         quality={100}
         alt="Fallback Image"
