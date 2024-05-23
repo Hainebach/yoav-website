@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchEntries } from "@../../../lib/contentful";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Work() {
   const [projects, setProjects] = useState([]);
@@ -16,7 +17,7 @@ export default function Work() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
       {projects.map((project) => (
-        <a
+        <Link
           key={project.sys.id}
           href={`/projects/${project.fields.slug}`}
           className="block"
@@ -25,10 +26,11 @@ export default function Work() {
             src={`https:${project.fields.thumbnail.fields.file.url}`}
             alt={project.fields.title}
             className="w-full h-auto"
-            width={project.fields.thumbnail.fields.file.details.image.width}
-            height={project.fields.thumbnail.fields.file.details.image.height}
+            width={300}
+            height={300}
           />
-        </a>
+          <h2 className="text-center mt-2">{project.fields.title}</h2>
+        </Link>
       ))}
     </div>
   );
