@@ -1,19 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { fetchEntries } from "@../../../lib/contentful";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Work() {
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    const getProjects = async () => {
-      const entries = await fetchEntries("images");
-      setProjects(entries);
-    };
-    getProjects();
-  }, []);
-
+export default function Work({ projects }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
       {projects.map((project) => (

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { fetchEntries } from "../../../lib/contentful";
 import Image from "next/image";
+import Link from "next/link";
 
 export async function getStaticPaths() {
   const entries = await fetchEntries("images");
@@ -23,7 +24,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function ProjectPage({ project }) {
+export default function ProjectPage({ project, projects }) {
   const { title, image, year, size, technique, tags } = project.fields;
   const [selectedImage, setSelectedImage] = useState(null);
   console.log("project fields: ", project.fields);
@@ -108,6 +109,27 @@ export default function ProjectPage({ project }) {
           </button>
         </div>
       )}
+      <footer className="mt-8">
+        <div className="flex overflow-x-auto space-x-4 justify-around">
+          {projects
+            .filter((proj) => proj.fields.slug !== project.fields.slug)
+            .map((proj) => (
+              <Link
+                key={proj.sys.id}
+                href={`/projects/${proj.fields.slug}`}
+                className="block flex-shrink-0"
+              >
+                <Image
+                  src={`https:${proj.fields.thumbnail.fields.file.url}`}
+                  alt={proj.fields.title}
+                  className="w-24 h-24 object-cover"
+                  width={96}
+                  height={96}
+                />
+              </Link>
+            ))}
+        </div>
+      </footer>
     </div>
   );
 }
