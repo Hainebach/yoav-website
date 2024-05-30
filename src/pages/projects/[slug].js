@@ -48,11 +48,13 @@ export default function ProjectPage({ project, projects }) {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-4">{title}</h1>
-      <p className="text-sm mb-4">
-        {technique} | {year}
-      </p>
+    <div className="py-6 px-12">
+      <div className="sticky top-0 bg-white pb-0.2">
+        <h1 className="text-3xl font-bold mb-4">{title}</h1>
+        <p className="text-sm mb-4">
+          {technique} | {year}
+        </p>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {image.map((img, index) => (
