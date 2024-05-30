@@ -24,8 +24,9 @@ export async function getStaticProps({ params }) {
 }
 
 export default function ProjectPage({ project }) {
-  const { title, image, year, size, Technique, tags } = project.fields;
+  const { title, image, year, size, technique, tags } = project.fields;
   const [selectedImage, setSelectedImage] = useState(null);
+  console.log("project fields: ", project.fields);
 
   const handleClick = (index) => {
     setSelectedImage(index);
@@ -49,7 +50,7 @@ export default function ProjectPage({ project }) {
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-4">{title}</h1>
       <p className="text-sm mb-4">
-        {Technique} | {year}
+        {technique} | {year}
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -84,7 +85,7 @@ export default function ProjectPage({ project }) {
           >
             ‹
           </button>
-          <div className="relative w-3/4 h-3/4 bg-transparent flex items-center justify-center">
+          <div className="relative w-3/4 h-3/4 pb-2 bg-transparent flex items-center justify-center">
             <Image
               src={`https:${image[selectedImage].fields.file.url}`}
               alt={title}
@@ -93,8 +94,8 @@ export default function ProjectPage({ project }) {
               className="object-contain"
             />
           </div>
-          <div className="absolute bottom-10 text-center text-white z-50 bg-transparent p-4">
-            <h2 className="text-lg font-bold">
+          <div className="absolute bottom-7 text-center text-white z-50 bg-transparent p-4">
+            <h2 className="text-lg font-bold pt-4">
               {image[selectedImage].fields.title}
             </h2>
             <p className="text-sm">{image[selectedImage].fields.description}</p>

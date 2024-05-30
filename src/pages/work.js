@@ -22,13 +22,16 @@ export default function Work() {
           href={`/projects/${project.fields.slug}`}
           className="block"
         >
-          <Image
-            src={`https:${project.fields.thumbnail.fields.file.url}`}
-            alt={project.fields.title}
-            className="w-full h-auto"
-            width={300}
-            height={300}
-          />
+          <div className="relative w-full pb-full overflow-hidden">
+            <Image
+              src={`https:${project.fields.thumbnail.fields.file.url}`}
+              alt={project.fields.title}
+              className="w-full h-auto"
+              objectFit="cover"
+              width={300}
+              height={300}
+            />
+          </div>
           <h2 className="text-center mt-2">{project.fields.title}</h2>
         </Link>
       ))}
