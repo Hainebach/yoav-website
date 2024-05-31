@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { useEffect, useRef, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
