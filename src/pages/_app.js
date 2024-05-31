@@ -16,10 +16,12 @@ export default function App({ Component, pageProps }) {
     getProjects();
   }, []);
   const router = useRouter();
+  const isIndexPage = router.pathname === "/";
+
   return (
     <>
-      {router.pathname !== "/" && <Header />}
-      <main>
+      {!isIndexPage && <Header />}
+      <main className={`${isIndexPage ? "" : "py-6 px-12 mt-10"}`}>
         <Component {...pageProps} projects={projects} />
       </main>
     </>

@@ -48,8 +48,8 @@ export default function ProjectPage({ project, projects }) {
   };
 
   return (
-    <div className="py-6 px-12">
-      <div className="sticky top-0 bg-white pb-0.2">
+    <div>
+      <div className="sticky top-0 bg-white pb-0.2 pt-1">
         <h1 className="text-3xl font-bold mb-4">{title}</h1>
         <p className="text-sm mb-4">
           {technique} | {year}

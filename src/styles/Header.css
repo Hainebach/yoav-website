@@ -3,13 +3,23 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 1rem;
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
   margin-bottom: 2rem;
+}
+
+.header-sticky {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1000;
 }
 
 .header-title {
   font-size: 1.5rem;
-  margin-left: 1rem;
+  margin-left: 0;
   font-weight: bold;
 }
 
@@ -18,7 +28,7 @@
 }
 
 .nav-link {
-  margin-right: 1rem;
+  padding-left: 1rem;
   text-decoration: none;
   color: inherit;
 }
