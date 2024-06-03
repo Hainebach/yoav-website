@@ -28,27 +28,31 @@ export default function About() {
   console.log("image: ", image);
 
   return (
-    <>
-      <h1> about {name}</h1>
-      <Image
-        src={`https:${image.fields.file.url}`}
-        alt={name}
-        objectFit="cover"
-        width={96}
-        height={96}
-      />
-      <div className="mb-4">
-        <h2 className="text-2xl font-semibold">About</h2>
-        <div>{documentToReactComponents(about)}</div>
+    <div className="flex items-center justify-center min-h-screen">
+      {/* <h1> about {name}</h1> */}
+      <div className="w-full max-w-lg p-8 rounded shadow-md">
+        <div className="flex justify-center pb-4">
+          <Image
+            src={`https:${image.fields.file.url}`}
+            alt={name}
+            objectFit="cover"
+            width={300}
+            height={300}
+          />
+        </div>
+        <div className="mb-4">
+          <h2 className="text-2xl font-semibold">About</h2>
+          <div>{documentToReactComponents(about)}</div>
+        </div>
+        <div className="mb-4">
+          <h2 className="text-2xl font-semibold">Statement</h2>
+          <div>{documentToReactComponents(statement)}</div>
+        </div>
+        <div className="mb-4">
+          <h2 className="text-2xl font-semibold">CV</h2>
+          <ReactMarkdown>{cv}</ReactMarkdown>
+        </div>
       </div>
-      <div className="mb-4">
-        <h2 className="text-2xl font-semibold">Statement</h2>
-        <div>{documentToReactComponents(statement)}</div>
-      </div>
-      <div className="mb-4">
-        <h2 className="text-2xl font-semibold">CV</h2>
-        <ReactMarkdown>{cv}</ReactMarkdown>
-      </div>
-    </>
+    </div>
   );
 }

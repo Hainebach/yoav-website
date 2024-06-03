@@ -39,23 +39,53 @@ export default function ContactForm() {
     }
   };
   return (
-    <form onSubmit={onSubmit}>
-      <label>
-        <span>Name</span>
-        <input type="text" name="name" required />
-      </label>
-      <label>
-        <span>Email</span>
-        <input type="email" name="email" required />
-      </label>
-      <label>
-        <span>Message</span>
-        <textarea name="message" required />
-      </label>
-      <button disabled={loading} type="submit">
-        Send message!
-      </button>
-      {successMessage && <p>{successMessage}</p>}
-    </form>
+    <div className="flex items-center justify-center min-h-screen">
+      <form
+        onSubmit={onSubmit}
+        className="w-full max-w-lg  p-8 rounded shadow-md"
+      >
+        <h2 className="font-bold mb-6 text-center">contact me</h2>
+        <label className="block mb-4">
+          {/* <span className="block text-gray-700">Name</span> */}
+          <input
+            type="text"
+            name="name"
+            placeholder="name"
+            required
+            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring ring-gray-200"
+          />
+        </label>
+        <label className="block mb-4">
+          {/* <span className="block text-gray-700">Email</span> */}
+          <input
+            type="email"
+            name="email"
+            placeholder="your email"
+            required
+            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring ring-gray-200"
+          />
+        </label>
+        <label className="block mb-6">
+          {/* <span className="block text-gray-700">Message</span> */}
+          <textarea
+            name="message"
+            placeholder="message"
+            rows={6}
+            required
+            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring ring-gray-200"
+          />
+        </label>
+        <button
+          disabled={loading}
+          type="submit"
+          className="w-full py-2 px-4 bg-gray-400 text-white font-bold rounded-md shadow-md hover:bg-pink-700 focus:outline-none focus:ring focus:ring-indigo-200"
+        >
+          Send message!
+        </button>
+        {successMessage && (
+          <p className="mt-4 text-green-600 text-center">{successMessage}</p>
+        )}
+      </form>
+    </div>
   );
 }
