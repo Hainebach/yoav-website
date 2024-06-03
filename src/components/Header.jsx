@@ -11,11 +11,11 @@ export default function Header() {
         <Link className="nav-link" href="/work">
           Work
         </Link>
-        <Link className="nav-link" href="/contact">
-          Contact
-        </Link>
         <Link className="nav-link" href="/about">
           About
+        </Link>
+        <Link className="nav-link" href="/contact">
+          Contact
         </Link>
       </nav>
     </header>
