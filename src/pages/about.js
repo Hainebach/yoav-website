@@ -29,7 +29,6 @@ export default function About() {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      {/* <h1> about {name}</h1> */}
       <div className="w-full max-w-lg p-8 rounded shadow-md">
         <div className="flex justify-center pb-4">
           <Image
