@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 
 export default function About() {
   const [info, setInfo] = useState(null);
+  const [activeSection, setActiveSection] = useState(null);
 
   useEffect(() => {
     const getInfo = async () => {
@@ -20,12 +21,10 @@ export default function About() {
   }
 
   const { name, about, statement, email, image, cv } = info.fields;
-  console.log("name: ", name);
-  console.log("about: ", about);
-  console.log("email: ", email);
-  console.log("statement: ", statement);
-  console.log("cv: ", cv);
-  console.log("image: ", image);
+
+  const toggleSection = (section) => {
+    setActiveSection(activeSection === section ? null : section);
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen">
@@ -40,16 +39,37 @@ export default function About() {
           />
         </div>
         <div className="mb-4">
-          <h2 className="text-2xl font-semibold">About</h2>
-          <div>{documentToReactComponents(about)}</div>
+          <h3
+            className="text-xl font-semibold cursor-pointer"
+            onClick={() => toggleSection("about")}
+          >
+            About
+          </h3>
+          {activeSection === "about" && (
+            <div>{documentToReactComponents(about)}</div>
+          )}
         </div>
         <div className="mb-4">
-          <h2 className="text-2xl font-semibold">Statement</h2>
-          <div>{documentToReactComponents(statement)}</div>
+          <h3
+            className="text-xl font-semibold cursor-pointer"
+            onClick={() => toggleSection("statement")}
+          >
+            Statement
+          </h3>
+          {activeSection === "statement" && (
+            <div>{documentToReactComponents(statement)}</div>
+          )}
         </div>
         <div className="mb-4">
-          <h2 className="text-2xl font-semibold">CV</h2>
-          <ReactMarkdown>{cv}</ReactMarkdown>
+          <h3
+            className="text-xl font-semibold cursor-pointer"
+            onClick={() => {
+              toggleSection("cv");
+            }}
+          >
+            CV
+          </h3>
+          {activeSection === "cv" && <ReactMarkdown>{cv}</ReactMarkdown>}
         </div>
       </div>
     </div>
