@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import ReactMarkdown from "react-markdown";
+import Link from "next/link";
+import { FaInstagram } from "react-icons/fa";
 
 export default function About() {
   const [info, setInfo] = useState(null);
@@ -70,6 +72,16 @@ export default function About() {
             CV
           </h3>
           {activeSection === "cv" && <ReactMarkdown>{cv}</ReactMarkdown>}
+        </div>
+        <div className="mt-4 flex justify-center">
+          <a
+            href={"https://www.instagram.com/hainebach"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-900"
+          >
+            <FaInstagram size={30} />
+          </a>
         </div>
       </div>
     </div>
