@@ -31,7 +31,7 @@ export default function About() {
 
   return (
     <div className="flex items-start justify-center min-h-screen">
-      <div className="w-full max-w-lg p-8 rounded shadow-md">
+      <div className="w-full max-w-lg p-8 rounded ">
         <div className="flex justify-center pb-4">
           <Image
             src={`https:${image.fields.file.url}`}
@@ -43,7 +43,7 @@ export default function About() {
         </div>
         <div className="mb-4">
           <h3
-            className="text-xl font-semibold cursor-pointer"
+            className=" font-semibold cursor-pointer"
             onClick={() => toggleSection("about")}
           >
             About
@@ -54,7 +54,7 @@ export default function About() {
         </div>
         <div className="mb-4">
           <h3
-            className="text-xl font-semibold cursor-pointer"
+            className="font-semibold cursor-pointer"
             onClick={() => toggleSection("statement")}
           >
             Statement
@@ -65,7 +65,7 @@ export default function About() {
         </div>
         <div className="mb-4">
           <h3
-            className="text-xl font-semibold cursor-pointer"
+            className="font-semibold cursor-pointer"
             onClick={() => {
               toggleSection("cv");
             }}
