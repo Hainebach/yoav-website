@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import ReactMarkdown from "react-markdown";
-import Link from "next/link";
 import { FaInstagram } from "react-icons/fa";
 
 export default function About() {
