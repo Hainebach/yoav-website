@@ -22,7 +22,8 @@ export default function About() {
     return <div>Loading...</div>;
   }
 
-  const { name, about, statement, email, image, cv } = info.fields;
+  const { name, about, statement, email, image, cv, instagramLink } =
+    info.fields;
 
   const toggleSection = (section) => {
     setActiveSection(activeSection === section ? null : section);
@@ -75,7 +76,7 @@ export default function About() {
         </div>
         <div className="mt-4 flex justify-center">
           <a
-            href={"https://www.instagram.com/hainebach"}
+            href={instagramLink}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-gray-900"
