@@ -39,7 +39,7 @@ export default function ContactForm() {
     }
   };
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-start justify-center min-h-screen">
       <form
         onSubmit={onSubmit}
         className="w-full max-w-lg  p-8 rounded shadow-md"
@@ -78,7 +78,7 @@ export default function ContactForm() {
         <button
           disabled={loading}
           type="submit"
-          className="w-full py-2 px-4 bg-gray-400 text-white font-bold rounded-md shadow-md hover:bg-pink-700 focus:outline-none focus:ring focus:ring-indigo-200"
+          className="w-full py-2 px-4 bg-gray-400 text-white font-bold rounded-md shadow-md hover:bg-gray-900 focus:outline-none focus:ring focus:ring-indigo-200"
         >
           Send message!
         </button>

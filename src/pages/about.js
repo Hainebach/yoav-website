@@ -30,7 +30,7 @@ export default function About() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-start justify-center min-h-screen">
       <div className="w-full max-w-lg p-8 rounded shadow-md">
         <div className="flex justify-center pb-4">
           <Image
