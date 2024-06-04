@@ -9,7 +9,7 @@ import { FaInstagram } from "react-icons/fa";
 
 export default function About() {
   const [info, setInfo] = useState(null);
-  const [activeSection, setActiveSection] = useState(null);
+  const [activeSection, setActiveSection] = useState("about");
 
   useEffect(() => {
     const getInfo = async () => {
@@ -49,7 +49,9 @@ export default function About() {
             About
           </h3>
           {activeSection === "about" && (
-            <div>{documentToReactComponents(about)}</div>
+            <div className="text-sm font-light">
+              {documentToReactComponents(about)}
+            </div>
           )}
         </div>
         <div className="mb-4">
@@ -60,7 +62,9 @@ export default function About() {
             Statement
           </h3>
           {activeSection === "statement" && (
-            <div>{documentToReactComponents(statement)}</div>
+            <div className="text-sm font-light">
+              {documentToReactComponents(statement)}
+            </div>
           )}
         </div>
         <div className="mb-4">
@@ -72,7 +76,9 @@ export default function About() {
           >
             CV
           </h3>
-          {activeSection === "cv" && <ReactMarkdown>{cv}</ReactMarkdown>}
+          {activeSection === "cv" && (
+            <ReactMarkdown className="text-sm font-light">{cv}</ReactMarkdown>
+          )}
         </div>
         <div className="mt-4 flex justify-center">
           <a
