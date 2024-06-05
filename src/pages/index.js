@@ -16,7 +16,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({ landingPage }) {
-  const { title, backgroundImage, backgroundMediaLink } = landingPage;
+  const { title, backgroundImage } = landingPage;
 
   return (
     <main className="relative h-screen w-full">
@@ -25,7 +25,7 @@ export default function Home({ landingPage }) {
         fill
         objectFit="cover"
         quality={100}
-        alt="Fallback Image"
+        alt="background Image, backgammon drawing"
         className="absolute top-0 left-0 w-full h-full object-cover"
       />
 
