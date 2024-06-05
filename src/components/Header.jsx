@@ -7,7 +7,7 @@ export default function Header() {
 
   return (
     <header className="header">
-      <Link className="header-title hover:font-extrabold" href="/work">
+      <Link className="header-title hover:scale-75 duration-200" href="/">
         yoav hainebach
       </Link>
       <nav>

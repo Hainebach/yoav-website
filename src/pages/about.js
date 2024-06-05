@@ -56,7 +56,7 @@ export default function About() {
         {Object.keys(sections).map((key) => (
           <div className="mb-4" key={key}>
             <h3
-              className=" font-light hover:font-semibold cursor-pointer"
+              className="  hover:font-semibold cursor-pointer"
               onClick={() => toggleSection(key)}
             >
               {getTitle(key)}
