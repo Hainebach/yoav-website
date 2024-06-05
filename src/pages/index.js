@@ -17,7 +17,7 @@ export default function Home() {
       />
 
       <div className="relative z-10 flex items-center justify-center h-full">
-        <Link className="text-white text-5xl" href={"/work"}>
+        <Link className="text-white hover:text-2xl text-xl" href={"/work"}>
           yoav hainebach
         </Link>
       </div>

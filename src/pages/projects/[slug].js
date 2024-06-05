@@ -62,6 +62,7 @@ export default function ProjectPage({ project, projects }) {
             key={index}
             src={`https:${img.fields.file.url}`}
             alt={title}
+            loading="lazy"
             width={img.fields.file.details.image.width}
             height={img.fields.file.details.image.height}
             className="w-full h-auto cursor-pointer"
