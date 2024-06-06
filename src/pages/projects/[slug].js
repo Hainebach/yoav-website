@@ -2,6 +2,7 @@ import { useState } from "react";
 import { fetchEntries } from "../../../lib/contentful";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export async function getStaticPaths() {
   const entries = await fetchEntries("images");
@@ -48,7 +49,13 @@ export default function ProjectPage({ project, projects }) {
   };
 
   return (
-    <div>
+    <motion.div
+      key={project.fields.slug}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
       <div className="sticky top-0 bg-white pb-0.2 pt-1">
         <h1 className="text-3xl font-bold mb-4">{title}</h1>
         <p className="text-sm mb-4">
@@ -133,6 +140,6 @@ export default function ProjectPage({ project, projects }) {
             ))}
         </div>
       </footer>
-    </div>
+    </motion.div>
   );
 }
