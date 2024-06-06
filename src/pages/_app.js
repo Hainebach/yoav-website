@@ -1,4 +1,4 @@
-import Header from "@/component/Header";
+import Header from "@/components/Header";
 import "@/styles/Header.css";
 import "@/styles/globals.css";
 import { useRouter } from "next/router";
