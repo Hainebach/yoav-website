@@ -1,9 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import { fetchEntries } from "../../lib/contentful";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export async function getStaticProps() {
   const entries = await fetchEntries("landingPage");

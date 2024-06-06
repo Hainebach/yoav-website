@@ -4,9 +4,12 @@ import "@/styles/globals.css";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { fetchEntries } from "@../../../lib/contentful";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState([]);
+  const router = useRouter();
+  const isIndexPage = router.pathname === "/";
 
   useEffect(() => {
     const getProjects = async () => {
@@ -15,15 +18,20 @@ export default function App({ Component, pageProps }) {
     };
     getProjects();
   }, []);
-  const router = useRouter();
-  const isIndexPage = router.pathname === "/";
 
   return (
-    <>
+    <AnimatePresence mode="wait">
       {!isIndexPage && <Header />}
-      <main className={`${isIndexPage ? "" : "py-6 px-12 mt-10"}`}>
+      <motion.main
+        key={router.route}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.7 }}
+        className={`${isIndexPage ? "" : "py-6 px-12 mt-10"}`}
+      >
         <Component {...pageProps} projects={projects} />
-      </main>
-    </>
+      </motion.main>
+    </AnimatePresence>
   );
 }

@@ -18,6 +18,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const entries = await fetchEntries("images");
   const project = entries.find((entry) => entry.fields.slug === params.slug);
+  const projects = entries.filter((entry) => entry.fields.slug !== params.slug);
 
   return {
     props: { project },
@@ -48,7 +49,7 @@ export default function ProjectPage({ project, projects }) {
   };
 
   return (
-    <div>
+    <>
       <div className="sticky top-0 bg-white pb-0.2 pt-1">
         <h1 className="text-3xl font-bold mb-4">{title}</h1>
         <p className="text-sm mb-4">
@@ -59,7 +60,7 @@ export default function ProjectPage({ project, projects }) {
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
         {image.map((img, index) => (
           <Image
-            key={index}
+            key={img.sys.id || index}
             src={`https:${img.fields.file.url}`}
             alt={title}
             loading="lazy"
@@ -74,18 +75,18 @@ export default function ProjectPage({ project, projects }) {
       {selectedImage !== null && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div
-            className="absolute inset-0 bg-black bg-opacity-75"
+            className="absolute inset-0 bg-white bg-opacity-75"
             onClick={handleClose}
           ></div>
           <button
             onClick={handleClose}
-            className="absolute top-4 right-4 text-white text-2xl z-50"
+            className="absolute top-4 right-4 text-gray text-2xl z-50"
           >
             ×
           </button>
           <button
             onClick={handlePrev}
-            className="absolute left-4 text-white text-2xl z-50"
+            className="absolute left-4 text-gray text-2xl z-50"
           >
             ‹
           </button>
@@ -98,7 +99,7 @@ export default function ProjectPage({ project, projects }) {
               className="object-contain"
             />
           </div>
-          <div className="absolute bottom-7 text-center text-white z-50 bg-transparent p-4">
+          <div className="absolute bottom-7 text-center text-gray z-50 bg-transparent p-4">
             <h2 className="text-lg font-bold pt-4">
               {image[selectedImage].fields.title}
             </h2>
@@ -106,7 +107,7 @@ export default function ProjectPage({ project, projects }) {
           </div>
           <button
             onClick={handleNext}
-            className="absolute right-4 text-white text-2xl z-50"
+            className="absolute right-4 text-gray text-2xl z-50"
           >
             ›
           </button>
@@ -133,6 +134,6 @@ export default function ProjectPage({ project, projects }) {
             ))}
         </div>
       </footer>
-    </div>
+    </>
   );
 }
