@@ -1,10 +1,18 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Work({ projects }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <motion.div
+      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+      key="work"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
       {projects.map((project) => (
         <Link
           key={project.sys.id}
@@ -24,6 +32,6 @@ export default function Work({ projects }) {
           <h2 className="text-center mt-2">{project.fields.title}</h2>
         </Link>
       ))}
-    </div>
+    </motion.div>
   );
 }
