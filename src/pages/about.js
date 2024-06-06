@@ -4,7 +4,6 @@ import { fetchEntries } from "../../lib/contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import ReactMarkdown from "react-markdown";
 import { FaInstagram } from "react-icons/fa";
-import { motion } from "framer-motion";
 
 export default function About() {
   const [info, setInfo] = useState(null);
@@ -42,14 +41,7 @@ export default function About() {
   };
 
   return (
-    <motion.div
-      className="flex items-center justify-center min-h-screen"
-      key="about"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
-    >
+    <div className="flex items-center justify-center min-h-screen">
       <div className="w-full max-w-lg p-8 rounded shadow-md">
         <div className="flex justify-center pb-4">
           <Image
@@ -87,6 +79,6 @@ export default function About() {
           </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }

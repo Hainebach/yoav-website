@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { fetchEntries } from "../../lib/contentful";
-import { motion } from "framer-motion";
 
 export async function getStaticProps() {
   const entries = await fetchEntries("landingPage");
@@ -17,14 +16,7 @@ export default function Home({ landingPage }) {
   const { title, backgroundImage } = landingPage;
 
   return (
-    <motion.main
-      className="relative h-screen w-full"
-      key="home"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
-    >
+    <main className="relative h-screen w-full">
       <Image
         src={`https:${backgroundImage.fields.file.url}`}
         fill
@@ -42,6 +34,6 @@ export default function Home({ landingPage }) {
           {title.toLowerCase()}
         </Link>
       </div>
-    </motion.main>
+    </main>
   );
 }
