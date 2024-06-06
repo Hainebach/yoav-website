@@ -94,8 +94,8 @@ export default function ProjectPage({ project, projects }) {
             <Image
               src={`https:${image[selectedImage].fields.file.url}`}
               alt={title}
-              layout="fill"
-              objectFit="contain"
+              fill
+              style={{ objectFit: "contain" }}
               className="object-contain"
             />
           </div>
