@@ -12,6 +12,7 @@
   --background-rgb: 18, 18, 18;
 }
 body {
+  font-family: "Space Mono", monospace;
   color: rgb(var(--foreground-rgb));
   background-color: rgb(var(--background-rgb));
 }

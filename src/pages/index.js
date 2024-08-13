@@ -28,7 +28,7 @@ export default function Home({ landingPage }) {
 
       <div className="relative z-10 flex items-center justify-center h-full">
         <Link
-          className="text-white hover:scale-150 duration-300 text-sm"
+          className="text-[rgb(var(--background-rgb))] hover:scale-150 duration-300 text-lg"
           href={"/work"}
         >
           {title.toLowerCase()}
