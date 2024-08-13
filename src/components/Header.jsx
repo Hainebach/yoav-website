@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <header className="header">
-      <Link className="header-title hover:scale-75 duration-200" href="/">
+      <Link className="header-title hover:scale-50 duration-200" href="/">
         yoav hainebach
       </Link>
       <nav>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { fetchEntries } from "../../../lib/contentful";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,16 +38,39 @@ export default function ProjectPage({ project, projects }) {
     setSelectedImage(null);
   };
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setSelectedImage((prevIndex) => (prevIndex + 1) % image.length);
-  };
+  }, [image.length]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setSelectedImage(
       (prevIndex) => (prevIndex - 1 + image.length) % image.length
     );
-  };
+  }, [image.length]);
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (selectedImage !== null) {
+        switch (event.key) {
+          case "ArrowRight":
+            handleNext();
+            break;
+          case "ArrowLeft":
+            handlePrev();
+            break;
+          case "Escape":
+            handleClose();
+            break;
+          default:
+            break;
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedImage, handleNext, handlePrev]);
   return (
     <>
       <div className="sticky top-0 bg-[rgb(var(--background-rgb))]  pt-2">
