@@ -50,10 +50,10 @@ export default function ProjectPage({ project, projects }) {
 
   return (
     <>
-      <div className="sticky top-0 bg-[rgb(var(--background-rgb))] pb-0.2 pt-1">
+      <div className="sticky top-0 bg-[rgb(var(--background-rgb))]  pt-2">
         <h1 className="text-3xl font-bold mb-4">{title}</h1>
         <p className="text-sm mb-4">
-          {technique} | {year}
+          {technique} {year && `| ${year}`}
         </p>
       </div>
 
