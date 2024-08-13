@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import DarkModeToggleButton from "./DarkModeToggleButton";
+import { color } from "framer-motion";
 
 export default function Header() {
   const router = useRouter();
@@ -35,6 +37,7 @@ export default function Header() {
         >
           Contact
         </Link>
+        <DarkModeToggleButton className="toggleButton" />
       </nav>
     </header>
   );

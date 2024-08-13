@@ -9,6 +9,10 @@
   margin-bottom: 2rem;
 }
 
+/* .dark header {
+  color: antiquewhite;
+} */
+
 .header-sticky {
   width: 100%;
   position: sticky;
