@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { fetchEntries } from "../../../lib/contentful";
+import { useGesture } from "react-use-gesture";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -71,6 +72,19 @@ export default function ProjectPage({ project, projects }) {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [selectedImage, handleNext, handlePrev]);
+
+  const bind = useGesture({
+    onDrag: ({ direction: [xDir], distance, velocity }) => {
+      if (velocity > 0.2) {
+        if (xDir > 0) {
+          handlePrev();
+        } else if (xDir < 0) {
+          handleNext();
+        }
+      }
+    },
+  });
+
   return (
     <>
       <div className="sticky top-0 bg-[rgb(var(--background-rgb))]  pt-2">
@@ -113,7 +127,10 @@ export default function ProjectPage({ project, projects }) {
           >
             ‹
           </button>
-          <div className="relative w-3/4 h-3/4 pb-2 bg-transparent flex items-center justify-center">
+          <div
+            className="relative w-3/4 h-3/4 pb-2 bg-transparent flex items-center justify-center"
+            {...bind()}
+          >
             <Image
               src={`https:${image[selectedImage].fields.file.url}`}
               alt={title}
