@@ -14,10 +14,17 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
+  body {
+    color: rgb(var(--foreground-rgb));
+    background-color: rgb(
+      var(--background-start-rgb)
+    ); /* Adjust this if needed */
+  }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
+  background-color: rgb(var(--background-end-rgb));
 }
 
 @layer utilities {
