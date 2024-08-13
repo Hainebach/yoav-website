@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.21.2",
+    "@tailwindcss/typography": "^0.5.14",
     "autoprefixer": "^10.4.19",
     "contentful": "^10.11.1",
     "form-data": "^4.0.0",

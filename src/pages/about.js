@@ -55,14 +55,18 @@ export default function About() {
         </div>
         {Object.keys(sections).map((key) => (
           <div className="mb-4" key={key}>
-            <h3
-              className="  hover:font-semibold cursor-pointer"
-              onClick={() => toggleSection(key)}
-            >
-              {getTitle(key)}
-            </h3>
+            <button>
+              <h3
+                className=" font-semibold hover:font-bold cursor-pointer"
+                onClick={() => toggleSection(key)}
+              >
+                {getTitle(key)}
+              </h3>
+            </button>
             {activeSection === key && (
-              <div className="text-sm font-light">{sections[key]}</div>
+              <div className="text-sm font-light prose prose-lg">
+                {sections[key]}
+              </div>
             )}
           </div>
         ))}
@@ -72,7 +76,7 @@ export default function About() {
               href={instagramLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-700 hover:text-gray-900"
+              className={`text-gray-500 hover:text-gray-900`}
             >
               <FaInstagram size={30} />
             </a>

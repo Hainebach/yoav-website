@@ -37,7 +37,7 @@ export default function Header() {
         >
           Contact
         </Link>
-        <DarkModeToggleButton className="toggleButton" />
+        <DarkModeToggleButton />
       </nav>
     </header>
   );
