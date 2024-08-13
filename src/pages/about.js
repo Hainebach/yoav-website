@@ -41,47 +41,55 @@ export default function About() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="w-full max-w-lg p-8 rounded shadow-md">
-        <div className="flex justify-center pb-4">
+    <div className="flex items-center justify-center ">
+      <div className="w-full max-w-lg p-8 rounded shadow-md h-[900px] overflow-hidden ">
+        <div className="flex justify-center">
           <Image
             src={`https:${image.fields.file.url}`}
             alt={name}
             objectFit="cover"
-            width={300}
-            height={300}
+            width={200}
+            height={200}
             className="rounded"
           />
         </div>
-        {Object.keys(sections).map((key) => (
-          <div className="mb-4" key={key}>
-            <button>
-              <h3
-                className=" font-semibold hover:font-bold cursor-pointer"
-                onClick={() => toggleSection(key)}
-              >
-                {getTitle(key)}
-              </h3>
-            </button>
-            {activeSection === key && (
-              <div className="text-sm font-light prose prose-lg">
-                {sections[key]}
-              </div>
+        <div className="flex flex-col items-center justify-center pt-4 pb-4">
+          <div className="flex flex-row justify-around w-full max-w-lg ">
+            {Object.keys(sections).map((key) => (
+              <button key={key}>
+                <h3
+                  className="font-semibold hover:font-bold cursor-pointer"
+                  onClick={() => toggleSection(key)}
+                >
+                  {getTitle(key)}
+                </h3>
+              </button>
+            ))}
+          </div>
+
+          <div className="w-full max-w-lg pt-6 h-[550px] overflow-y-auto">
+            {Object.keys(sections).map(
+              (key) =>
+                activeSection === key && (
+                  <div className="text-xs font-light prose prose-lg" key={key}>
+                    {sections[key]}
+                  </div>
+                )
             )}
           </div>
-        ))}
-        {instagramLink && (
-          <div className="mt-4 flex justify-center">
-            <a
-              href={instagramLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`text-gray-500 hover:text-gray-900`}
-            >
-              <FaInstagram size={30} />
-            </a>
-          </div>
-        )}
+          {instagramLink && (
+            <div className="mt-4 justify-center">
+              <a
+                href={instagramLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-gray-500 hover:text-gray-900`}
+              >
+                <FaInstagram size={30} />
+              </a>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

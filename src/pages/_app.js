@@ -27,7 +27,7 @@ export default function App({ Component, pageProps }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.2 }}
         className={`${isIndexPage ? "" : "py-6 px-12 mt-10"}`}
       >
         <Component {...pageProps} projects={projects} />
