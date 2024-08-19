@@ -2,41 +2,35 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import DarkModeToggleButton from "./DarkModeToggleButton";
-import { color } from "framer-motion";
 
 export default function Header() {
   const router = useRouter();
 
+  const navLinks = [
+    { href: "/work", label: "work" },
+    { href: "/about", label: "about" },
+    { href: "/contact", label: "contact" },
+  ];
+
   return (
     <header className="header">
-      <Link className="header-title hover:scale-50 duration-200" href="/">
+      <Link className="header-title hover:scale-50 duration-200" href="/work">
         yoav hainebach
       </Link>
       <nav>
-        <Link
-          className={`nav-link hover:font-semibold ${
-            router.pathname === "/work" ? "text-gray-300" : ""
-          }`}
-          href="/work"
-        >
-          Work
-        </Link>
-        <Link
-          className={`nav-link hover:font-semibold ${
-            router.pathname === "/about" ? "text-gray-300" : ""
-          }`}
-          href="/about"
-        >
-          About
-        </Link>
-        <Link
-          className={`nav-link hover:font-semibold ${
-            router.pathname === "/contact" ? "text-gray-300" : ""
-          }`}
-          href="/contact"
-        >
-          Contact
-        </Link>
+        {navLinks.map(({ href, label }) => (
+          <Link
+            key={href}
+            className={`nav-link hover:font-semibold ${
+              router.pathname === href
+                ? "text-gray-300 pointer-events-none cursor-default"
+                : ""
+            }`}
+            href={href}
+          >
+            {label}
+          </Link>
+        ))}
         <DarkModeToggleButton />
       </nav>
     </header>
