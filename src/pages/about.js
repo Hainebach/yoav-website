@@ -72,7 +72,7 @@ export default function About() {
               (key) =>
                 activeSection === key && (
                   <div
-                    className="font-light prose prose-lg sm:prose-base md:prose-s text-secondaryGray mx-auto"
+                    className="font-light prose prose-lg sm:prose-base md:prose-sm text-secondaryGray mx-auto"
                     key={key}
                   >
                     {sections[key]}
