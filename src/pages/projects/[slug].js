@@ -88,14 +88,14 @@ export default function ProjectPage({ project, projects }) {
 
   return (
     <>
-      <div className="sticky top-0 bg-[rgb(var(--background-rgb))] pt-2">
+      <div className="sticky top-0 bg-[rgb(var(--background-rgb))] pt-2 pl-12 ">
         <h1 className="text-3xl font-bold mb-4 text-midGray">{title}</h1>
         <p className="text-sm mb-4 text-secondaryGray">
           {technique} {year && `| ${year}`}
         </p>
       </div>
 
-      <div className="grid grid-cols-2  md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2  md:grid-cols-3  pl-12 pr-12 gap-6">
         {image.map((img, index) => (
           <Image
             key={img.sys.id || index}
