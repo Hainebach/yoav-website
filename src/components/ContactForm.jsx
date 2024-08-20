@@ -44,15 +44,16 @@ export default function ContactForm() {
         onSubmit={onSubmit}
         className="w-full max-w-lg  p-8 rounded shadow-md"
       >
-        <h2 className="font-bold mb-6 text-center">contact me</h2>
+        <h2 className="font-bold mb-6 text-center text-secondaryGray">
+          contact me
+        </h2>
         <label className="block mb-4">
-          {/* <span className="block text-gray-700">Name</span> */}
           <input
             type="text"
             name="name"
             placeholder="name"
             required
-            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring ring-gray-200"
+            className="mt-1 block w-full px-3 py-2 bg-backgroundColor border border-secondaryGray rounded-md shadow-sm focus:outline-none focus:ring ring-gray-200"
           />
         </label>
         <label className="block mb-4">
@@ -62,7 +63,7 @@ export default function ContactForm() {
             name="email"
             placeholder="your email"
             required
-            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring ring-gray-200"
+            className="mt-1 block w-full px-3 py-2 bg-backgroundColor border border-secondaryGray rounded-md shadow-sm focus:outline-none focus:ring ring-gray-200"
           />
         </label>
         <label className="block mb-6">
@@ -72,13 +73,13 @@ export default function ContactForm() {
             placeholder="message"
             rows={6}
             required
-            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring ring-gray-200"
+            className="mt-1 block w-full px-3 py-2 bg-backgroundColor border border-secondaryGray rounded-md shadow-sm focus:outline-none focus:ring ring-gray-200"
           />
         </label>
         <button
           disabled={loading}
           type="submit"
-          className="w-full py-2 px-4 bg-gray-400 text-white font-bold rounded-md shadow-md hover:bg-gray-900 focus:outline-none focus:ring focus:ring-indigo-200"
+          className="w-full py-2 px-4 bg-secondaryGray text-primaryGray font-bold rounded-md shadow-md hover:bg-secondaryGray focus:outline-none focus:ring focus:ring-indigo-200"
         >
           Send message!
         </button>
