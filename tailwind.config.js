@@ -12,6 +12,7 @@ module.exports = {
         primaryGray: "rgb(var(--foreground-rgb))",
         secondaryGray: "rgb(var(--secondary-gray))",
         midGray: "rgb(var(--mid-gray))",
+        backgroundColor: "rgb(var(--background-rgb))",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
