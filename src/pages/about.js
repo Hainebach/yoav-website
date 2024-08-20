@@ -42,7 +42,7 @@ export default function About() {
 
   return (
     <div className="flex items-center justify-center ">
-      <div className="w-full max-w-4xl md:max-w-4xl md:p-8 p-0 rounded md:shadow-md shadow-none h-[900px] overflow-hidden ">
+      <div className="w-full max-w-4xl md:max-w-4xl md:p-8 p-0 rounded md:shadow-md shadow-none h-[950px] overflow-hidden ">
         <div className="flex justify-center">
           <Image
             src={`https:${image.fields.file.url}`}
@@ -81,7 +81,7 @@ export default function About() {
             )}
           </div>
           {instagramLink && (
-            <div className="mt-4 justify-center">
+            <div className="mt-4 justify-center ">
               <a
                 href={instagramLink}
                 target="_blank"
