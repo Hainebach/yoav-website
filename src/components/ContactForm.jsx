@@ -14,6 +14,12 @@ export default function ContactForm() {
     const form = event.target;
     const formValues = Object.fromEntries(new FormData(form).entries());
 
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+    if (!emailPattern.test(formValues.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
     setLoading(true);
     setSuccessMessage("");
 
@@ -38,16 +44,18 @@ export default function ContactForm() {
       setLoading(false);
     }
   };
+
   return (
     <div className="flex items-start justify-center min-h-screen">
       <form
         onSubmit={onSubmit}
         className="w-full max-w-lg  p-8 rounded shadow-md"
+        id="contactForm"
       >
         <h2 className="font-bold mb-6 text-center text-secondaryGray">
           contact me
         </h2>
-        <label className="block mb-4">
+        <label htmlFor="name" className="block mb-4">
           <input
             type="text"
             name="name"
@@ -56,8 +64,7 @@ export default function ContactForm() {
             className="mt-1 block w-full px-3 py-2 bg-backgroundColor border border-secondaryGray rounded-md shadow-sm focus:outline-none focus:ring ring-gray-200"
           />
         </label>
-        <label className="block mb-4">
-          {/* <span className="block text-gray-700">Email</span> */}
+        <label htmlFor="email" className="block mb-4">
           <input
             type="email"
             name="email"
@@ -66,8 +73,7 @@ export default function ContactForm() {
             className="mt-1 block w-full px-3 py-2 bg-backgroundColor border border-secondaryGray rounded-md shadow-sm focus:outline-none focus:ring ring-gray-200"
           />
         </label>
-        <label className="block mb-6">
-          {/* <span className="block text-gray-700">Message</span> */}
+        <label htmlFor="message" className="block mb-6">
           <textarea
             name="message"
             placeholder="message"
