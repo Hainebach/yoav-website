@@ -54,7 +54,7 @@ export default function About() {
           />
         </div>
         <div className="flex flex-col items-center justify-center pt-4">
-          <div className="flex flex-row justify-around text-xl w-full max-w-3xl pb-4">
+          <div className="flex flex-row justify-around text-xl w-full max-w-3xl pb-4 mb-4">
             {Object.keys(sections).map((key) => (
               <button key={key}>
                 <h3
