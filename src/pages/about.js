@@ -37,7 +37,7 @@ export default function About() {
     if (key === "cv") {
       return "CV";
     }
-    return key.charAt(0).toUpperCase() + key.slice(1);
+    return key.charAt(0).toLowerCase() + key.slice(1);
   };
 
   return (
