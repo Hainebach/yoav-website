@@ -42,7 +42,7 @@ export default function About() {
 
   return (
     <div className="flex items-center justify-center ">
-      <div className="w-full max-w-4xl sm:w-full p-8 rounded shadow-md h-[900px] overflow-hidden ">
+      <div className="w-full max-w-4xl sm:w-full p-8 sm:p-0 rounded shadow-md sm:shadow-none h-[900px] overflow-hidden ">
         <div className="flex justify-center">
           <Image
             src={`https:${image.fields.file.url}`}

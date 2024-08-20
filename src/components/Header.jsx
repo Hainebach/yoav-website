@@ -47,7 +47,7 @@ export default function Header() {
         <DarkModeToggleButton />
       </nav>
       {isOpen && (
-        <div className="absolute top-16 right-4 bg-backgroundColor shadow-lg rounded-lg p-4 z-50 md:hidden">
+        <div className="absolute top-16 right-4 bg-backgroundColor shadow-md rounded-lg p-4 z-50 md:hidden">
           <nav className="flex flex-col space-y-4">
             {navLinks.map(({ href, label }) => (
               <Link
