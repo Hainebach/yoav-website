@@ -42,7 +42,7 @@ export default function About() {
 
   return (
     <div className="flex items-center justify-center ">
-      <div className="w-full max-w-4xl sm:w-full p-8 sm:p-0 rounded shadow-md sm:shadow-none h-[900px] overflow-hidden ">
+      <div className="w-full max-w-4xl md:max-w-4xl md:p-8 p-0 rounded md:shadow-md shadow-none h-[900px] overflow-hidden ">
         <div className="flex justify-center">
           <Image
             src={`https:${image.fields.file.url}`}
@@ -67,12 +67,12 @@ export default function About() {
             ))}
           </div>
 
-          <div className="max-w-6xl sm:w-full text-justify h-[550px] overflow-y-auto">
+          <div className="md:max-w-6xl w-full text-justify h-[580px] overflow-y-auto">
             {Object.keys(sections).map(
               (key) =>
                 activeSection === key && (
                   <div
-                    className="font-light prose prose-lg sm:prose-base md:prose-sm text-secondaryGray mx-auto"
+                    className="font-light prose md:prose-lg prose-sm text-secondaryGray mx-auto"
                     key={key}
                   >
                     {sections[key]}
