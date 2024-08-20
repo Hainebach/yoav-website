@@ -51,13 +51,13 @@ export default function Header() {
           ☰
         </button>
       </div>
-      <nav className="hidden md:flex space-x-2">
+      <nav className="hidden md:flex items-center space-x-4">
         {navLinks.map(({ href, label }) => (
           <Link
             key={href}
             className={`nav-link hover:font-semibold ${
               router.pathname === href
-                ? "text-gray-300 pointer-events-none cursor-default"
+                ? "text-secondaryGray pointer-events-none cursor-default"
                 : ""
             }`}
             href={href}

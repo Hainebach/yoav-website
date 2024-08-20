@@ -28,7 +28,7 @@ export default function DarkModeToggleButton() {
   return (
     <button
       onClick={toggleDarkMode}
-      className={`p-2 rounded-md ${isDarkMode ? "text-gray-100" : ""}`}
+      className={`rounded-md ${isDarkMode ? "text-gray-100" : ""}`}
     >
       {isDarkMode ? "☼" : "☽"}
     </button>
