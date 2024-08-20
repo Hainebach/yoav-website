@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import DarkModeToggleButton from "./DarkModeToggleButton";
@@ -6,6 +6,7 @@ import DarkModeToggleButton from "./DarkModeToggleButton";
 export default function Header() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
 
   const navLinks = [
     { href: "/work", label: "work" },
@@ -16,6 +17,26 @@ export default function Header() {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleClickOutside = (e) => {
+    if (menuRef.current && !menuRef.current.contains(e.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(
+    function () {
+      if (isOpen) {
+        document.addEventListener("click", handleClickOutside);
+      } else {
+        document.removeEventListener("click", handleClickOutside);
+      }
+      return () => {
+        document.removeEventListener("click", handleClickOutside);
+      };
+    },
+    [isOpen]
+  );
 
   return (
     <header className="header">
@@ -47,7 +68,10 @@ export default function Header() {
         <DarkModeToggleButton />
       </nav>
       {isOpen && (
-        <div className="absolute top-16 right-4 bg-backgroundColor shadow-md rounded-lg p-4 z-50 md:hidden">
+        <div
+          ref={menuRef}
+          className="absolute top-16 right-4 bg-backgroundColor shadow-md rounded-lg p-4 z-50 md:hidden"
+        >
           <nav className="flex flex-col space-y-4">
             {navLinks.map(({ href, label }) => (
               <Link
