@@ -14,7 +14,8 @@ export default function Header() {
     { href: "/contact", label: "contact" },
   ];
 
-  const toggleMenu = () => {
+  const toggleMenu = (e) => {
+    e.stopPropagation();
     setIsOpen(!isOpen);
   };
 
@@ -24,19 +25,16 @@ export default function Header() {
     }
   };
 
-  useEffect(
-    function () {
-      if (isOpen) {
-        document.addEventListener("click", handleClickOutside);
-      } else {
-        document.removeEventListener("click", handleClickOutside);
-      }
-      return () => {
-        document.removeEventListener("click", handleClickOutside);
-      };
-    },
-    [isOpen]
-  );
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("click", handleClickOutside);
+    } else {
+      document.removeEventListener("click", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
     <header className="header">
@@ -47,6 +45,8 @@ export default function Header() {
         <button
           onClick={toggleMenu}
           className="text-secondaryGray outline-none"
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
         >
           ☰
         </button>
@@ -70,6 +70,7 @@ export default function Header() {
       {isOpen && (
         <div
           ref={menuRef}
+          id="mobile-menu"
           className="absolute top-16 right-4 bg-backgroundColor shadow-md rounded-lg p-4 z-50 md:hidden"
         >
           <nav className="flex flex-col space-y-4">
@@ -82,7 +83,7 @@ export default function Header() {
                     : ""
                 }`}
                 href={href}
-                onClick={() => setIsOpen(false)} // Close menu on link click
+                onClick={() => setIsOpen(false)}
               >
                 {label}
               </Link>
