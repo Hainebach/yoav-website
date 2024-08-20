@@ -87,9 +87,9 @@ export default function ProjectPage({ project, projects }) {
 
   return (
     <>
-      <div className="sticky top-0 bg-[rgb(var(--background-rgb))]  pt-2">
-        <h1 className="text-3xl font-bold mb-4">{title}</h1>
-        <p className="text-sm mb-4">
+      <div className="sticky top-0 bg-[rgb(var(--background-rgb))] pt-2">
+        <h1 className="text-3xl font-bold mb-4 text-midGray">{title}</h1>
+        <p className="text-sm mb-4 text-secondaryGray">
           {technique} {year && `| ${year}`}
         </p>
       </div>
@@ -139,11 +139,13 @@ export default function ProjectPage({ project, projects }) {
               className="object-contain"
             />
           </div>
-          <div className="absolute bottom-7 text-center text-gray z-50 bg-transparent p-4">
-            <h2 className="text-lg font-bold pt-4">
+          <div className="absolute bottom-7 text-center  z-50 bg-transparent p-4">
+            <h2 className="text-lg font-bold pt-4 text-primaryGray">
               {image[selectedImage].fields.title}
             </h2>
-            <p className="text-sm">{image[selectedImage].fields.description}</p>
+            <p className="text-sm text-midGray">
+              {image[selectedImage].fields.description}
+            </p>
           </div>
           <button
             onClick={handleNext}

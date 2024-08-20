@@ -30,7 +30,7 @@ export default function About() {
   };
 
   const toggleSection = (section) => {
-    setActiveSection(activeSection === section ? null : section);
+    setActiveSection(section);
   };
 
   const getTitle = (key) => {
@@ -42,7 +42,7 @@ export default function About() {
 
   return (
     <div className="flex items-center justify-center ">
-      <div className="w-full max-w-lg p-8 rounded shadow-md h-[900px] overflow-hidden ">
+      <div className="w-full max-w-4xl p-8 rounded shadow-md h-[900px] overflow-hidden ">
         <div className="flex justify-center">
           <Image
             src={`https:${image.fields.file.url}`}
@@ -53,8 +53,8 @@ export default function About() {
             className="rounded"
           />
         </div>
-        <div className="flex flex-col items-center justify-center pt-4 pb-4">
-          <div className="flex flex-row justify-around w-full max-w-lg ">
+        <div className="flex flex-col items-center justify-center pt-4">
+          <div className="flex flex-row justify-around text-xl w-full max-w-3xl pb-4">
             {Object.keys(sections).map((key) => (
               <button key={key}>
                 <h3
@@ -67,11 +67,14 @@ export default function About() {
             ))}
           </div>
 
-          <div className="w-full max-w-lg pt-6 h-[550px] overflow-y-auto">
+          <div className="max-w-3xl text-justify h-[550px] overflow-y-auto">
             {Object.keys(sections).map(
               (key) =>
                 activeSection === key && (
-                  <div className="text-xs font-light prose prose-lg" key={key}>
+                  <div
+                    className="text-s font-light prose prose-lg text-secondaryGray"
+                    key={key}
+                  >
                     {sections[key]}
                   </div>
                 )
