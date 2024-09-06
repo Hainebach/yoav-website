@@ -2,24 +2,31 @@ import { useState, useEffect, useCallback } from "react";
 import { fetchEntries } from "../../../lib/contentful";
 import { useGesture } from "react-use-gesture";
 import Image from "next/image";
-import Link from "next/link";
 import Footer from "@/components/Footer";
 
 export async function getStaticPaths() {
   const entries = await fetchEntries("images");
+  console.log("fetched entries: ", entries);
+
   const paths = entries.map((entry) => ({
     params: { slug: entry.fields.slug },
   }));
 
   return {
     paths,
-    fallback: true,
+    fallback: "blocking",
   };
 }
 
 export async function getStaticProps({ params }) {
   const entries = await fetchEntries("images");
   const project = entries.find((entry) => entry.fields.slug === params.slug);
+  if (!project) {
+    return {
+      notFound: true,
+    };
+  }
+
   const projects = entries.filter((entry) => entry.fields.slug !== params.slug);
 
   return {
@@ -30,7 +37,7 @@ export async function getStaticProps({ params }) {
 export default function ProjectPage({ project, projects }) {
   const { title, image, year, size, technique, tags } = project.fields;
   const [selectedImage, setSelectedImage] = useState(null);
-  console.log("project fields: ", project.fields);
+  // console.log("project fields: ", project.fields);
 
   const handleClick = (index) => {
     setSelectedImage(index);

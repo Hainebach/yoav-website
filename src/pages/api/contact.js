@@ -29,11 +29,6 @@ export default async function contact(req, res) {
   const text = `From: ${name} <${email}>\n\n${message}`;
 
   try {
-    console.log("Attempting to send email with the following details:");
-    console.log("From:", CONTACT_FORM_FROM_EMAIL);
-    console.log("To:", CONTACT_FORM_TO_EMAIL);
-    console.log("Domain:", MAILGUN_DOMAIN);
-
     const response = await mg.messages.create(MAILGUN_DOMAIN, {
       from: CONTACT_FORM_FROM_EMAIL,
       to: CONTACT_FORM_TO_EMAIL,
@@ -42,20 +37,16 @@ export default async function contact(req, res) {
       "h:Reply-To": email,
     });
 
-    console.log("Email sent successfully:", response);
-
     res.status(200).json({ status: "ok" });
   } catch (error) {
     if (error.status === 403) {
       console.error(
         "Error sending email: Forbidden. Please check your Mailgun account settings."
       );
-      res
-        .status(403)
-        .json({
-          status: "error",
-          message: "Forbidden. Please check your Mailgun account settings.",
-        });
+      res.status(403).json({
+        status: "error",
+        message: "Forbidden. Please check your Mailgun account settings.",
+      });
     } else {
       console.error("Error sending email:", error);
       res
