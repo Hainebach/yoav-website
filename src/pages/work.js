@@ -3,9 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Work({ projects }) {
+  const sortedProjects = [...projects].sort(
+    (a, b) => a.fields.sortOrder - b.fields.sortOrder
+  );
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      {projects.map((project) => (
+      {sortedProjects.map((project) => (
         <Link
           key={project.sys.id}
           href={`/projects/${project.fields.slug}`}
