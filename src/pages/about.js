@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { fetchEntries } from "../../lib/contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
@@ -8,6 +8,7 @@ import { FaInstagram } from "react-icons/fa";
 export default function About() {
   const [info, setInfo] = useState(null);
   const [activeSection, setActiveSection] = useState("about");
+  const contentRef = useRef(null);
 
   useEffect(() => {
     const getInfo = async () => {
@@ -23,6 +24,7 @@ export default function About() {
 
   const { name, about, statement, email, image, cv, instagramLink } =
     info.fields;
+
   const sections = {
     about: documentToReactComponents(about),
     statement: documentToReactComponents(statement),
@@ -31,6 +33,10 @@ export default function About() {
 
   const toggleSection = (section) => {
     setActiveSection(section);
+
+    if (contentRef.current) {
+      contentRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   const getTitle = (key) => {
@@ -53,7 +59,7 @@ export default function About() {
             className="rounded"
           />
         </div>
-        <div className="flex flex-col items-center justify-center pt-4">
+        <div className="flex flex-col items-center justify-center pt-4 h-[calc(100%-200px)]">
           <div className="flex flex-row justify-around text-xl w-full max-w-3xl pb-4 mb-4">
             {Object.keys(sections).map((key) => (
               <button key={key}>
@@ -67,7 +73,10 @@ export default function About() {
             ))}
           </div>
 
-          <div className="md:max-w-6xl w-full text-justify h-[580px] overflow-y-auto">
+          <div
+            ref={contentRef} // Attach ref to the content container
+            className="md:max-w-6xl w-full text-justify h-[580px] overflow-y-auto"
+          >
             {Object.keys(sections).map(
               (key) =>
                 activeSection === key && (
@@ -80,6 +89,7 @@ export default function About() {
                 )
             )}
           </div>
+
           {instagramLink && (
             <div className="mt-4 justify-center ">
               <a
