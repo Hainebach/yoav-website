@@ -22,6 +22,11 @@ module.exports = {
       fontFamily: {
         mono: ["var(--font-space_mono)", "monospace"],
       },
+      colors: {
+        "primary-color": "rgb(var(--foreground-rgb))",
+        "background-color": "rgb(var(--background-rgb))",
+        "background-color-opacity": "rgba(var(--background-rgb), 1)",
+      },
     },
   },
   plugins: [
