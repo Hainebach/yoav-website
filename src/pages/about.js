@@ -25,11 +25,18 @@ export default function About() {
   const { name, about, statement, email, image, cv, instagramLink } =
     info.fields;
 
-  const sections = {
-    about: documentToReactComponents(about),
-    statement: documentToReactComponents(statement),
-    cv: <ReactMarkdown>{cv}</ReactMarkdown>,
-  };
+  // Only include sections that have content
+  const availableSections = {};
+  if (about) availableSections.about = documentToReactComponents(about);
+  if (statement)
+    availableSections.statement = documentToReactComponents(statement);
+  if (cv) availableSections.cv = <ReactMarkdown>{cv}</ReactMarkdown>;
+
+  // Determine which section to display (default to first available if current is not valid)
+  const availableSectionKeys = Object.keys(availableSections);
+  const currentSection = availableSectionKeys.includes(activeSection)
+    ? activeSection
+    : availableSectionKeys[0] || "about";
 
   const toggleSection = (section) => {
     setActiveSection(section);
@@ -61,7 +68,7 @@ export default function About() {
         </div>
         <div className="flex flex-col items-center justify-center pt-4 h-[calc(100%-200px)]">
           <div className="flex flex-row justify-around text-xl w-full max-w-3xl pb-4 mb-4">
-            {Object.keys(sections).map((key) => (
+            {Object.keys(availableSections).map((key) => (
               <button key={key}>
                 <h3
                   className="font-semibold hover:font-bold cursor-pointer"
@@ -77,16 +84,16 @@ export default function About() {
             ref={contentRef} // Attach ref to the content container
             className="md:max-w-6xl w-full text-justify h-[580px] overflow-y-auto"
           >
-            {Object.keys(sections).map(
+            {Object.keys(availableSections).map(
               (key) =>
-                activeSection === key && (
+                currentSection === key && (
                   <div
                     className="font-light prose md:prose-lg prose-sm text-secondaryGray prose-strong:text-primaryGray mx-auto"
                     key={key}
                   >
-                    {sections[key]}
+                    {availableSections[key]}
                   </div>
-                )
+                ),
             )}
           </div>
 
