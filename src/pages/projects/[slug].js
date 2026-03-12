@@ -100,7 +100,7 @@ export default function ProjectPage({ project, projects }) {
 
   return (
     <div className="flex flex-col min-h-[calc(100vh-160px)]">
-      <div className="sticky top-0 bg-[rgb(var(--background-rgb))] pt-2">
+      <div className="sticky top-0 bg-[rgb(var(--background-rgb))] pt-2 z-10">
         <h1 className="text-3xl font-bold mb-4 text-midGray">{title}</h1>
         <p className="text-sm mb-4 text-secondaryGray">
           {technique} {year && `| ${year}`}
@@ -108,7 +108,7 @@ export default function ProjectPage({ project, projects }) {
       </div>
 
       {hasVideos && (
-        <div className="w-full mb-10">
+        <div className="w-full mb-10 z-0">
           {videos.map((video) => (
             <VideoPlayer key={video.sys.id} video={video.fields} />
           ))}
@@ -116,7 +116,7 @@ export default function ProjectPage({ project, projects }) {
       )}
 
       {hasImages && (
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 z-0">
           {image.map((img, index) => (
             <Image
               key={img.sys.id || index}
