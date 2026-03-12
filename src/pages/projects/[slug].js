@@ -99,7 +99,7 @@ export default function ProjectPage({ project, projects }) {
   });
 
   return (
-    <>
+    <div className="flex flex-col min-h-[calc(100vh-160px)]">
       <div className="sticky top-0 bg-[rgb(var(--background-rgb))] pt-2">
         <h1 className="text-3xl font-bold mb-4 text-midGray">{title}</h1>
         <p className="text-sm mb-4 text-secondaryGray">
@@ -179,6 +179,6 @@ export default function ProjectPage({ project, projects }) {
       )}
 
       <Footer project={project} projects={projects} />
-    </>
+    </div>
   );
 }
