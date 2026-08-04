@@ -6,6 +6,15 @@ import { useState, useEffect } from "react";
 import { fetchEntries } from "@../../../lib/contentful";
 import { AnimatePresence, motion } from "framer-motion";
 import Head from "next/head";
+import { Space_Mono } from "next/font/google";
+
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-space_mono",
+  display: "swap",
+});
 
 export default function App({ Component, pageProps }) {
   const [projects, setProjects] = useState([]);
@@ -30,6 +39,11 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+      <style jsx global>{`
+        html {
+          --font-space_mono: ${spaceMono.style.fontFamily};
+        }
+      `}</style>
       {favicon && (
         <Head>
           <link rel="icon" href={favicon} type="image/png" />
